@@ -3,10 +3,10 @@
 use strict;
 use warnings;
 
-use Nagios::Plugin;
+use Monitoring::Plugin;
 use birdctl;
 
-my $np = Nagios::Plugin->new(
+my $np = Monitoring::Plugin->new(
   plugin => "check_bird_proto", shortname => "BIRD_PROTO", version => "0.1",
   usage => "Usage: %s -p <protocol> [ -r <table> -z -s <socket> ]",
 );
@@ -27,7 +27,7 @@ $np->add_arg(
 $np->add_arg(
   spec => "socket|s=s",
   help => "The location of the BIRD control socket.",
-  default => "/var/run/bird.ctl",
+  default => "/var/run/bird/bird.ctl",
 );
 $np->getopts;
 
